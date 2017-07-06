@@ -37,28 +37,27 @@ public class LookAndSay {
         };
     }
 
-    private static
-Generator<Integer> next(Generator<Integer> inner) {
-  return new Generator<Integer>() {
-    @Override
-    protected void run() throws InterruptedException {
-      Iterator<Integer> it = inner.iterator();
-      int prev = it.next();
-      int count = 1;
-      while (it.hasNext()) {
-        int c = it.next();
-        if (prev == c)
-          count++;
-        else {
-          yield(count);
-          yield(prev);
-          prev = c;
-          count = 1;
-        }
-      }
-      yield(count);
-      yield(prev);
-    }
-  };
-}
+    private static Generator<Integer> next(Generator<Integer> inner) {
+	  return new Generator<Integer>() {
+	    @Override
+	    protected void run() throws InterruptedException {
+	      Iterator<Integer> it = inner.iterator();
+	      int prev = it.next();
+	      int count = 1;
+	      while (it.hasNext()) {
+		int c = it.next();
+		if (prev == c)
+		  count++;
+		else {
+		  yield(count);
+		  yield(prev);
+		  prev = c;
+		  count = 1;
+		}
+	      }
+	      yield(count);
+	      yield(prev);
+	    }
+	  };
+	}
 }

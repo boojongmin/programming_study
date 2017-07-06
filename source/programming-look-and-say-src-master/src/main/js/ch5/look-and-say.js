@@ -18,6 +18,7 @@ function* next(g) {
     }
   }
   yield* [count, prev]
+  // yield [count, prev]
 }
 
 for (let c of ant(10))
